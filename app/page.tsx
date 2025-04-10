@@ -75,60 +75,65 @@ export default function Home() {
     };
 
     return (
-        <main>
+        <main className="bg-[#121212] min-h-screen flex items-center justify-center p-4">
             <div className="container">
                 <h1>Username Registration</h1>
                 <p className="description">Make a Bitcoin username with @nitishjha.space</p>
 
                 <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="username">
-                            Username
-                        </label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            placeholder="Enter your username"
-                            disabled={isProcessing || isSuccess}
-                        />
+                    <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="username" className="text-sm font-medium text-gray-700">
+                                Username
+                            </label>
+                            <input
+                                type="text"
+                                id="username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter your username"
+                                disabled={isProcessing || isSuccess}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="expiry" className="text-sm font-medium text-gray-700">
+                                Expiration Time
+                            </label>
+                            <select
+                                id="expiry"
+                                value={selectedExpiry}
+                                onChange={(e) => setSelectedExpiry(e.target.value as ExpiryOption)}
+                                className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                disabled={isProcessing || isSuccess}
+                            >
+                                {EXPIRY_OPTIONS.map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        {!isSuccess && (
+                            <button
+                                type="submit"
+                                disabled={!username || isProcessing}
+                                className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {isProcessing ? 'Processing...' : 'Create Username'}
+                            </button>
+                        )}
                     </div>
-                    <div>
-                        <label htmlFor="expiry">
-                            Expiration Time
-                        </label>
-                        <select
-                            id="expiry"
-                            value={selectedExpiry}
-                            onChange={(e) => setSelectedExpiry(e.target.value as ExpiryOption)}
-                            disabled={isProcessing || isSuccess}
-                        >
-                            {EXPIRY_OPTIONS.map((option) => (
-                                <option key={option.value} value={option.value}>
-                                    {option.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    {!isSuccess && (
-                        <button
-                            type="submit"
-                            disabled={!username || isProcessing}
-                        >
-                            {isProcessing ? 'Processing...' : 'Create Username'}
-                        </button>
-                    )}
                 </form>
 
                 {result && (
-                    <div className={`result ${isSuccess ? 'success' : 'error'}`}>
-                        <div className="result-title">{isSuccess ? 'Success!' : 'Error'}</div>
+                    <div className={`p-4 rounded ${isSuccess ? 'bg-green-500' : 'bg-red-500'} text-white mt-4`}>
+                        <div className="font-semibold">{isSuccess ? 'Success!' : 'Error'}</div>
                         <div>{error || result.message}</div>
                         
                         {isSuccess && result.username && (
-                            <div className="result-code">
-                                <code>
+                            <div className="mt-3">
+                                <code className="bg-[#2a2a2a] p-2 rounded block">
                                     {result.username}
                                 </code>
                             </div>
@@ -142,6 +147,7 @@ export default function Home() {
                                     setSelectedExpiry('never');
                                     setIsSuccess(false);
                                 }}
+                                className="mt-4 bg-gray-700 hover:bg-gray-600 text-white rounded"
                             >
                                 Register Another Username
                             </button>
