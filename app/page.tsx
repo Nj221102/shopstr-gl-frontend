@@ -111,29 +111,23 @@ export default function Home() {
                         />
                         <span>Shopstr</span>
                     </div>
-                    <p className="description text-center">Make a Bitcoin username with @nitishjha.space</p>
+                    <p className="description">Make a Bitcoin username with @nitishjha.space</p>
 
-                    <form onSubmit={handleSubmit} className="form-container grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <form onSubmit={handleSubmit} className="form-container space-y-5">
                         <div className="form-group">
-                            <label htmlFor="username">
-                                Username
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    id="username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    placeholder="Enter your username"
-                                    disabled={isProcessing}
-                                    required
-                                />
-                            </div>
+                            <label htmlFor="username">Username</label>
+                            <input
+                                type="text"
+                                id="username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                placeholder="Enter your username"
+                                disabled={isProcessing}
+                                required
+                            />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="expiry">
-                                Expiration Time
-                            </label>
+                            <label htmlFor="expiry">Expiration Time</label>
                             <select
                                 id="expiry"
                                 value={selectedExpiry}
@@ -147,18 +141,16 @@ export default function Home() {
                                 ))}
                             </select>
                         </div>
-                        <div className="md:col-span-2">
-                            {!isSuccess && (
-                                <button
-                                    type="submit"
-                                    disabled={!username || isProcessing}
-                                    className="flex items-center justify-center"
-                                >
-                                    {isProcessing && <span className="spinner"></span>}
-                                    {isProcessing ? 'Processing...' : 'Create Username'}
-                                </button>
-                            )}
-                        </div>
+                        {!isSuccess && (
+                            <button
+                                type="submit"
+                                disabled={!username || isProcessing}
+                                className="flex items-center justify-center"
+                            >
+                                {isProcessing && <span className="spinner"></span>}
+                                {isProcessing ? 'Processing...' : 'Create Username'}
+                            </button>
+                        )}
                     </form>
 
                     {(isSuccess || error) && (

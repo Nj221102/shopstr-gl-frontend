@@ -1,18 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Shopstr Username Registration
+
+A simple web application for registering Bitcoin usernames with BOLT12 offers.
 
 ## Getting Started
 
-First, run the development server:
+### Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+
+### Production Build
+
+```bash
+# Create a production build (static export)
+npm run build
+
+# Serve the static files
+npm start
+```
+
+The application is configured for static export with Next.js, which means it generates HTML/CSS/JS files that can be served from any static file server, including GitHub Pages.
+
+## Deployment
+
+### GitHub Pages
+
+This project is configured for GitHub Pages deployment. When you push to the main branch, it will automatically deploy to GitHub Pages.
+
+### Custom Server
+
+If you want to serve the application from a custom server:
+
+1. Build the application: `npm run build`
+2. Copy the contents of the `out` directory to your server
+3. Configure your server to serve static files from this directory
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

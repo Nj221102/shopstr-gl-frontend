@@ -2,11 +2,21 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+// Load Inter font properly using Next.js font system
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
+// Use relative paths for icons to work with any basePath
 export const metadata: Metadata = {
   title: 'Shopstr Username Registration',
   description: 'Register your Shopstr username with BOLT12 offers',
+  icons: {
+    icon: './shopstr_logo.png',
+    apple: './shopstr_logo.png',
+  },
 };
 
 interface RootLayoutProps {
@@ -15,9 +25,10 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+        <link rel="icon" href="./shopstr_logo.png" />
+        <link rel="apple-touch-icon" href="./shopstr_logo.png" />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         {children}
