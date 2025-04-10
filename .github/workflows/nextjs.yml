@@ -42,11 +42,11 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_URL: https://setbitcoinusername.nitishjha.space
       
-      - name: Upload pages
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-          name: pages
+          name: github-pages
 
   deploy:
     environment:
