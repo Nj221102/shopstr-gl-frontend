@@ -9,10 +9,7 @@ const nextConfig = {
   assetPrefix: '',
   trailingSlash: true,
   distDir: 'out',
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['critters']
-  },
+  swcMinify: true,
 };
 
 module.exports = nextConfig;
