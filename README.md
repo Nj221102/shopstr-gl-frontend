@@ -1,6 +1,28 @@
-# Shopstr Username Registration
+# Shopstr Bitcoin Username Registration
 
-A simple web application for registering Bitcoin usernames with BOLT12 offers.
+A web application for registering Bitcoin usernames with BOLT12 offers on the `nitishjha.space` domain. This application integrates with a Greenlight API for BOLT12 offer generation and allows users to register Bitcoin usernames.
+
+## Features
+
+- Bitcoin username registration with custom domain
+- BOLT12 offer generation through Greenlight API
+- Configurable expiration times for offers
+- Modern, responsive UI with lightning theme
+- Static site deployment
+
+## Environment Configuration
+
+Create a `.env` file at the root of the project based on the `.env.example`:
+
+```bash
+# API configuration
+NEXT_PUBLIC_GREENLIGHT_API_URL=https://example-api-url.com
+
+# Cloudflare configuration
+CLOUDFLARE_API_KEY=your_cloudflare_api_key
+CLOUDFLARE_ZONE_ID=your_cloudflare_zone_id
+DOMAIN=example.com
+```
 
 ## Getting Started
 
@@ -13,6 +35,8 @@ npm install
 # Run the development server
 npm run dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
 ### Production Build
 
@@ -40,17 +64,20 @@ If you want to serve the application from a custom server:
 2. Copy the contents of the `out` directory to your server
 3. Configure your server to serve static files from this directory
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Next.js](https://nextjs.org) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [React](https://reactjs.org/) - UI library
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## API Integration
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The application integrates with two APIs:
+1. Greenlight API - For generating BOLT12 offers
+2. Username API - For registering Bitcoin usernames
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+These endpoints are configured through environment variables.
 
 ## Learn More
 
