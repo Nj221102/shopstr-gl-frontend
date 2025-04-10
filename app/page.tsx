@@ -17,6 +17,7 @@ const EXPIRY_OPTIONS = [
 
 // Get API URL from environment variable
 const GREENLIGHT_API_URL = process.env.NEXT_PUBLIC_GREENLIGHT_API_URL || 'http://localhost:8081';
+const USERNAME_API_URL = process.env.NEXT_PUBLIC_USERNAME_API_URL || 'http://localhost:8080';
 
 export default function Home() {
     const [username, setUsername] = useState('');
@@ -44,7 +45,7 @@ export default function Home() {
                 throw new Error(offerData.message || 'Failed to create offer');
             }
 
-            const createResponse = await fetch('/api/create-username', {
+            const createResponse = await fetch(`${USERNAME_API_URL}/create-username`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
