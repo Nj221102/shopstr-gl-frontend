@@ -41,9 +41,7 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_GREENLIGHT_API_URL: ${{ secrets.NEXT_PUBLIC_GREENLIGHT_API_URL }}
-          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
-          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-          DOMAIN: ${{ secrets.DOMAIN }}
+          NEXT_PUBLIC_USERNAME_API_URL: ${{ secrets.NEXT_PUBLIC_USERNAME_API_URL }}
           ESLINT_NO_DEP_WARNINGS: ${{ vars.ESLINT_NO_DEP_WARNINGS }}
           NODE_ENV: production
       
