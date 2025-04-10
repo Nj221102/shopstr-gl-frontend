@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import shopstrLogo from '../public/shopstr_logo.png';
 
 type ExpiryOption = 'never' | '1min' | '1h' | '12h' | '1d' | '1month' | '1y';
 
@@ -88,7 +89,7 @@ export default function Home() {
             <header className="header">
                 <div className="logo-container">
                     <Image 
-                        src="/shopstr_logo.png" 
+                        src={shopstrLogo} 
                         alt="Shopstr Logo" 
                         width={28} 
                         height={28} 
@@ -102,7 +103,7 @@ export default function Home() {
                 <div className="container">
                     <div className="logo-title-container">
                         <Image 
-                            src="/shopstr_logo.png" 
+                            src={shopstrLogo} 
                             alt="Shopstr Logo" 
                             width={60} 
                             height={60} 
