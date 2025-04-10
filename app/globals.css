@@ -2,73 +2,134 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --shopstr-purple: #8241FC;
+  --shopstr-black: #111111;
+  --shopstr-dark-gray: #1A1A1A;
+  --shopstr-border: rgba(75, 75, 75, 0.3);
+}
+
 body {
-    background: #181818;
-    color: #ffffff;
+  @apply bg-[#111111] text-gray-200 antialiased min-h-screen;
+  background: linear-gradient(to bottom, #111111, #191919);
+}
+
+.header {
+  @apply w-full p-3 px-6 flex items-center;
+  border-bottom: 1px solid var(--shopstr-border);
+  background-color: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.logo-container {
+  @apply flex items-center gap-1;
+}
+
+.logo-text {
+  @apply text-white text-base font-bold;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
 }
 
 .container {
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-    background: #202020;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  width: 95%;
+  @apply absolute top-1/2 left-1/2 p-6 px-12 bg-[#1A1A1A] rounded-2xl shadow-2xl;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(90, 90, 90, 0.15);
+  animation: fadeIn 0.5s ease-out;
 }
 
-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 10px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -48%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 .description {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 20px;
+  @apply text-sm text-gray-400 text-center mb-6;
+  font-family: 'Inter', sans-serif;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+  @apply block text-sm font-medium text-gray-400 mb-1.5;
 }
 
 input,
 select {
-    background: #2a2a2a;
-    color: #ffffff;
-    border: 1px solid #5a5a5a;
-    border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    transition: border 0.3s;
+  @apply w-full px-4 py-3 bg-[#252525] border border-gray-700/30 rounded-lg text-white placeholder-gray-500;
+  @apply focus:outline-none focus:ring-2 focus:ring-[#8241FC]/50 focus:border-[#8241FC]/40 transition-all;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
-input::placeholder {
-    color: #888;
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23AAAAAA%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 0.6rem auto;
+  padding-right: 2.5rem;
 }
 
-input:focus,
-select:focus {
-    border-color: #4a90e2;
-    outline: none;
+button[type="submit"] {
+  @apply relative w-full mt-6 px-4 py-3.5 text-white font-semibold rounded-lg transition-all;
+  background: linear-gradient(to right, #7a3df5, #8b45ff);
+  @apply hover:bg-[#8241FC]/90 hover:-translate-y-0.5 hover:shadow-lg;
+  @apply disabled:bg-gray-500 disabled:hover:translate-y-0 disabled:shadow-none;
+  box-shadow: 0 4px 12px rgba(130, 65, 252, 0.3);
 }
 
-button {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    transition: background 0.3s;
+.spinner {
+  @apply inline-block animate-spin rounded-full h-5 w-5 border-2 border-white/80 border-t-white border-r-white mr-2;
 }
 
-button:hover {
-    background: #45a049;
+.result-message {
+  @apply p-6 rounded-xl mt-6 text-sm border;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.result-success {
+  @apply bg-[#8241FC]/10 border-[#8241FC]/20 text-gray-100;
+}
+
+.result-error {
+  @apply bg-red-800/20 border-red-700/30 text-red-100;
+}
+
+.result-message code {
+  @apply block bg-[#2A2A2A] p-3 rounded-md mt-2 font-mono text-sm break-all;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-message button {
+  @apply mt-4 px-4 py-2 bg-gray-700 text-white text-xs font-medium rounded-lg;
+  @apply hover:bg-gray-600;
+}
+
+.form-group {
+  @apply relative mb-6;
+}
+
+.form-container {
+  @apply relative rounded-xl overflow-hidden max-w-[95%] mx-auto;
+}
+
+.lightning-bg {
+  @apply fixed inset-0 -z-10;
+  background: radial-gradient(circle at 50% 50%, rgba(130, 65, 252, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.logo-title-container {
+  @apply flex items-center justify-center mb-6 mt-2;
+  margin-right: 40px;
+}
+
+.logo-title-container img {
+  @apply inline-block;
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 0 8px rgba(130, 65, 252, 0.5));
+}
+
+.logo-title-container span {
+  @apply inline-block ml-4 text-2xl font-bold text-white;
 }
